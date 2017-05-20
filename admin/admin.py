@@ -2,15 +2,11 @@ from functools import wraps
 
 
 def admin(user_group):
-    print("in admin")
 
     def group_restriction(func):
-        print("in group_restriction")
 
         @wraps(func)
         def wrapper(bot, update, *args, **kwargs):
-            print("user_group", user_group)
-            print(kwargs)
             # extract user_id from arbitrary update
             try:
                 user_id = update.message.from_user.id
